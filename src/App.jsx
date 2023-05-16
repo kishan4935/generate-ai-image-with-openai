@@ -31,6 +31,7 @@ function App() {
       {loading ? (
         <>
           <h2>Generating..Please Wait..</h2>
+          <iframe src="https://embed.lottiefiles.com/animation/31636"></iframe>
           <div class="lds-ripple">
             <div></div>
             <div></div>
