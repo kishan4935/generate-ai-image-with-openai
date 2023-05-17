@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Configuration, OpenAIApi } from "openai";
+import { Player } from "@lottiefiles/react-lottie-player";
 import "./App.css";
+import loadingAnimation from "./assets/loading.json";
 
 function App() {
   const [prompt, setPrompt] = useState("");
@@ -30,12 +32,14 @@ function App() {
     <div className="app-main">
       {loading ? (
         <>
-          <h2>Generating..Please Wait..</h2>
-          <iframe src="https://embed.lottiefiles.com/animation/31636"></iframe>
-          <div class="lds-ripple">
-            <div></div>
-            <div></div>
-          </div>
+          <h3>Generating image...</h3>
+          <Player
+            autoplay
+            loop
+            src={loadingAnimation}
+            style={{ height: "300px", width: "300px" }}
+          >
+          </Player>
         </>
       ) : (
         <>
