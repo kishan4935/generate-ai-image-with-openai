@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Configuration, OpenAIApi } from "openai";
+import { OpenAI} from "openai";
 import { Player } from "@lottiefiles/react-lottie-player";
 import "./App.css";
 import loadingAnimation from "./assets/loading.json";
@@ -11,16 +11,17 @@ function App() {
   const [placeholder, setPlaceholder] = useState(
     "Search Bears with Paint Brushes the Starry Night, painted by Vincent Van Gogh.."
   );
-  const configuration = new Configuration({
+  const openai = new OpenAI({
+
     apiKey: import.meta.env.VITE_Open_AI_Key,
+    dangerouslyAllowBrowser: true
   });
 
-  const openai = new OpenAIApi(configuration);
 
   const generateImage = async () => {
     setPlaceholder(`Search ${prompt}..`);
     setLoading(true);
-    const res = await openai.Image.createImage({
+    const res = await openai.images.generate({
       prompt: prompt,
       n: 1,
       size: "512x512",
